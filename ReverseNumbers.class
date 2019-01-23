@@ -1,0 +1,26 @@
+package ReverseNumbers;
+
+import java.util.ArrayDeque;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Scanner;
+
+public class ReverseNumberswithStack {
+
+	public static void main(String[] args) {
+		
+		Scanner scan = new Scanner(System.in);
+		String[] numbers = scan.nextLine().split(" ");
+		
+		int[] array = Arrays.asList(numbers).stream().mapToInt(Integer::parseInt).toArray();
+		ArrayDeque<Integer> stack = new ArrayDeque<Integer>();
+		
+		for(int i = 0; i < array.length; i ++) {
+			stack.push(array[i]);
+		}
+		for (Integer number : stack) {
+	         System.out.print(number + " ");
+	      }
+
+	}
+}
