@@ -1,1 +1,1 @@
-# Project1
+# Exercises/SoftUni
