@@ -1,0 +1,53 @@
+package SoftUniParty;
+
+import java.util.HashSet;
+import java.util.Scanner;
+import java.util.TreeSet;
+
+public class SoftUniParty {
+
+	public static void main(String[] args) {
+		
+		Scanner scan = new Scanner(System.in);
+		String input = scan.nextLine();
+		
+		HashSet<String> regularGuests = new HashSet<String>();
+		TreeSet<String> vipGuests = new TreeSet<String>();
+		
+		while(!input.equals("PARTY")) {
+			
+			String[] splittedCommand = input.split("");
+			char checkForStatus = splittedCommand[0].charAt(0);
+			
+			if(Character.isDigit(checkForStatus)) {
+				vipGuests.add(input);				
+			}
+			else {
+				regularGuests.add(input);
+			}
+			input = scan.nextLine();
+		}
+		
+		if(input.equals("PARTY"))
+		{
+			input = scan.nextLine();
+		}
+		
+		while(!input.equals("END")) {
+			
+			if(regularGuests.contains(input))
+			{
+				regularGuests.remove(input);
+			}
+			else if(vipGuests.contains(input)) {
+				vipGuests.remove(input);
+			}
+			input = scan.nextLine();
+		}
+		
+		int size = (vipGuests.size()) + (regularGuests.size());
+		System.out.println(size);
+		vipGuests.forEach(e-> System.out.println(e));
+		regularGuests.forEach(e-> System.out.println(e));
+	}
+}
