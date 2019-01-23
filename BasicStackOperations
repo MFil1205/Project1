@@ -1,0 +1,63 @@
+package BasicStackOperations;
+
+import java.util.ArrayDeque;
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class BasicStackOperations {
+
+	public static void main(String[] args) {
+		
+		Scanner scan = new Scanner(System.in);
+		String[] numbers = scan.nextLine().split(" ");
+		
+		int[] array = Arrays.asList(numbers).stream().mapToInt(Integer::parseInt).toArray();
+		
+		int numberOfElementsToPush = array[0];
+		int numberOfElementsToPop = array[1];
+		int checkIfItIsPresented = array[2];
+		
+		Scanner scan1 = new Scanner(System.in);
+		String[] numbers1 = scan.nextLine().split(" ");
+		int[] array1 = Arrays.asList(numbers1).stream().mapToInt(Integer::parseInt).toArray();
+		
+			ArrayDeque<Integer> stack = new ArrayDeque<Integer>();
+		
+			for(int i = 0; i < numberOfElementsToPush; i ++) {
+				stack.push(array1[i]);
+			}
+		
+			if(stack.size()>0)
+			{
+		
+				for(int i = 0; i < numberOfElementsToPop; i ++) {
+					stack.pop();
+				}
+		
+				Boolean result = stack.contains(checkIfItIsPresented);
+		
+				if(result)
+				{
+					System.out.println("true");
+				}
+				else {
+					int smallestNumber = stack.getFirst();
+					int element = stack.peek();
+					
+					for(int i = 0; i < stack.size(); i++)
+					{						
+						if(element < smallestNumber) {
+							element = smallestNumber;
+						}
+
+					}
+					System.out.println(smallestNumber);
+				}
+			}
+		else
+		{
+			System.out.println("0");
+		}
+	}
+
+}
