@@ -1,0 +1,48 @@
+package Phonebook;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Scanner;
+
+public class Phonebook {
+
+	public static void main(String[] args) {
+		
+		Scanner scan = new Scanner(System.in);
+		String command = scan.nextLine();
+		String searchedName;
+		
+		HashMap<String, String> collection = new HashMap<String, String>();
+		
+		
+		while(!command.equals("stop")) {
+			
+			while(!command.equals("search")) {
+				String[] input = command.split("-");
+				String name = input[0];
+				String number = input[1];
+				
+				if(!collection.containsKey(name)) {
+					collection.put(name, number);
+				}
+				else {
+					collection.put(name, collection.get(name)+ number);
+				}
+				command = scan.nextLine();
+
+			searchedName = scan.nextLine();
+			
+			if(collection.containsKey(searchedName))
+			{
+				for (Map.Entry<String, String> entry : collection.entrySet()) {
+				    System.out.println(entry.getKey() +" - > "+ entry.getValue());
+				}
+			}
+			else {
+				System.out.println("Contact " + searchedName + " does not exist.");
+			}
+			searchedName = scan.nextLine();	
+			}
+		}
+	}
+}
