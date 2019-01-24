@@ -2,6 +2,7 @@ package SetsofElements;
 
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Scanner;
 
@@ -16,9 +17,9 @@ public class SetsofElements {
 		String[] nAndM = scan.nextLine().split(" ");
 		int n = Integer.parseInt(nAndM[0]);
 		int m = Integer.parseInt(nAndM[1]);
-		
-		HashSet<String> nElements = new HashSet<String>();
-		HashSet<String> mElements = new HashSet<String>();
+				
+		LinkedHashSet<String> nElements = new LinkedHashSet<String>();
+		LinkedHashSet<String> mElements = new LinkedHashSet<String>();
 
 		for(int i = 0; i < n; i++) {
 			nElement = scan.nextLine();
@@ -29,9 +30,9 @@ public class SetsofElements {
 			mElement = scan.nextLine();
 			mElements.add(mElement);
 		}
-		List<String> common = new ArrayList<String>(nElements);	
+		LinkedHashSet<String> common = new LinkedHashSet<String>(nElements);
 		common.retainAll(mElements);
-		common.forEach(e->System.out.print(e + " "));		
+		common.forEach(e->System.out.print(e + " "));	
 	}
 
 }
