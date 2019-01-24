@@ -1,0 +1,79 @@
+package PeriodicTable;
+
+import java.util.Scanner;
+import java.util.TreeSet;
+
+public class PeriodicTable {
+
+	public static void main(String[] args) {
+
+		Scanner scan = new Scanner(System.in);
+		int n;
+		n = scan.nextInt();
+		String elementInArray = "";
+		
+		TreeSet<String> set = new TreeSet<String>();
+			
+		for(int i = 0; i < n; i++) {
+			Scanner scan2 = new Scanner(System.in);
+			elementInArray = scan2.nextLine();
+			
+			String[] array = elementInArray.split(" ");
+			int elementInArrayLenght = array.length;
+			
+			if(elementInArrayLenght == 1) {				
+				if(!set.contains(elementInArray)) {
+					set.add(elementInArray);					
+					}
+			}
+			
+			else if(elementInArrayLenght == 2 ) {
+							
+				String value1 = array[0];
+				String value2 =  array[1];
+				
+				if(!set.contains(value1)){
+				set.add(value1);
+				}
+				if(!set.contains(value2))
+					set.add(value2);
+				}
+			
+			else if(elementInArrayLenght == 3) {
+				String value1 = array[0];
+				String value2 =  array[1];
+				String value3 =  array[2];
+				
+				if(!set.contains(value1)){
+					set.add(value1);
+					}
+				if(!set.contains(value2)) {
+					set.add(value2);
+				}
+				if(!set.contains(value3)) {
+					set.add(value3);
+				}		
+			}
+			else if(elementInArrayLenght == 4) {
+				String value1 = array[0];
+				String value2 =  array[1];
+				String value3 =  array[2];
+				String value4 =  array[3];
+				
+				if(!set.contains(value1)){
+					set.add(value1);
+					}
+				if(!set.contains(value2)) {
+					set.add(value2);
+				}
+				if(!set.contains(value3)) {
+					set.add(value3);
+				}
+				if(!set.contains(value4)) {
+					set.add(value3);
+				}	
+		}		
+	}
+		set.forEach(e->System.out.print(e + " "));
+	}
+}
