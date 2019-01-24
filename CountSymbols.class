@@ -1,8 +1,6 @@
 package CountSymbols;
 
-import java.util.HashMap;
 import java.util.Scanner;
-import java.util.SortedMap;
 import java.util.TreeMap;
 
 public class CountSymbols {
@@ -22,7 +20,7 @@ public class CountSymbols {
 		    	collection.put(input.charAt(i), counter);
 		    }
 		    else
-		    	collection.replace((input.charAt(i)), counter + 1);
+		    collection.put(input.charAt(i), collection.get(input.charAt(i)) + 1);
 		    
 		}
 		for (Character name: collection.keySet()){
