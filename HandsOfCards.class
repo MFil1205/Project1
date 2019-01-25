@@ -1,0 +1,39 @@
+package HandsOfCards;
+
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Scanner;
+
+public class HandsOfCards {
+
+	public static void main(String[] args) {
+		
+		Scanner scan = new Scanner(System.in);
+		String command = scan.nextLine();
+		char power = (Character) null;
+		char type = (Character) null;
+		
+		HashMap<String,HashMap<Character, Character>> collections = new HashMap<String,HashMap<Character,Character>>();
+		List<String> list = new ArrayList<String>();
+		
+		while(!command.equals("JOKER")) {
+			
+			String[] myArr = command.split("\\s");
+			String name = myArr[0];
+				
+				for(int i = 1; i < myArr.length; i++)
+				{
+					power = myArr[i].charAt(0);
+					type = myArr[i].charAt(1);
+				}
+				
+				if(!collections.containsKey(name)) {
+					collections.put(name, new HashMap<Character, Character>());
+		
+					collections.get(name).put(power, type);
+			}
+		}
+	}
+}
