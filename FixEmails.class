@@ -1,0 +1,55 @@
+package FixEmails;
+
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Scanner;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
+
+import javax.swing.text.TabSet;
+
+public class FixEmails {
+
+	public static void main(String[] args) {
+		
+		Scanner scan = new Scanner(System.in);
+		String command = scan.nextLine();
+		String name = "";
+		String email = "";;
+		String us = "us".toLowerCase();
+		String com = "com".toLowerCase();
+		String uk = "uk".toLowerCase();
+		
+		ConcurrentHashMap<String,String> collections = new ConcurrentHashMap<String,String>();
+
+		while(!command.equals("stop"))
+		{		
+			if(command.contains("@")) {
+				email = command;
+				if(collections.containsKey(name)) {
+					collections.put(name, collections.get(name)+ email);
+				}
+			}
+			else {
+				name = command;
+				email = "";
+				collections.put(name, email);
+			}
+			command = scan.nextLine();			
+		}
+		
+		
+		for (Map.Entry<String, String> entry : collections.entrySet()) {
+		     
+			if(entry.getValue().contains(us) || entry.getValue().contains(com)|| entry.getValue().contains(uk)){
+		    	 collections.remove(entry.getKey());
+		      
+		    }
+		}
+		for (Map.Entry<String, String> entry : collections.entrySet()) {
+		    System.out.println(entry.getKey() +" -> "+ entry.getValue());
+		}
+	}
+}
