@@ -8,7 +8,7 @@ public class СръбскоUnleashed {
 	public static void main(String[] args) {
 		
 		Scanner scan = new Scanner(System.in);
-		String command = "";
+		String command = scan.nextLine();
 		int money = 0;
 		String name = null;
 		int ticketsPrice = 0;
@@ -18,8 +18,6 @@ public class СръбскоUnleashed {
 		
 		
 		while(!command.equals("End")) {
-			command = scan.nextLine();
-
 				String[] splittedCommand = command.split("@");
 				String[] splitBySpase = splittedCommand[0].toString().split(" ");
 				String[] splitBySpase2 = splittedCommand[1].toString().split(" ");
@@ -89,14 +87,18 @@ public class СръбскоUnleashed {
 					{
 						collection.put(name, money);
 					}
-					else
+					else {
 						collection.put(name, collection.get(name) + money);
+					}
 					
 					System.out.println("Money is:" +  money);
+					
+					command = scan.nextLine();
+					
 				}
 			for (String names: collection.keySet()){
 
-				String key =name.toString();
+				String key = name.toString();
 				String value = collection.get(name).toString();  
 				System.out.println(key + " -> " + value);  
 			} 
