@@ -1,0 +1,85 @@
+package СръбскоUnleashed;
+
+import java.util.Scanner;
+
+public class СръбскоUnleashed {
+
+	public static void main(String[] args) {
+		
+		Scanner scan = new Scanner(System.in);
+		String command = "";
+		int money = 0;
+		int ticketsPrice = 0;
+		int ticketsCount = 0;
+		
+		while(!command.equals("End")) {
+			command = scan.nextLine();
+
+				String[] splittedCommand = command.split("@");
+				String[] splitBySpase = splittedCommand[0].toString().split(" ");
+				String[] splitBySpase2 = splittedCommand[1].toString().split(" ");
+				
+					if(splitBySpase.length == 1){
+						String name = splitBySpase[0];
+						
+						if(splitBySpase2.length == 3) {
+						String vanue1 = splitBySpase2[0];
+						ticketsPrice = Integer.parseInt(splitBySpase2[1]);
+						ticketsCount = Integer.parseInt(splitBySpase2[2]);
+						}
+						
+						else if(splitBySpase2.length == 4) {
+							String vanue1 = (splitBySpase2[0] + " " + splitBySpase2[1]);
+							ticketsPrice = Integer.parseInt(splitBySpase2[2]);
+							ticketsCount = Integer.parseInt(splitBySpase2[3]);
+						}
+						else {
+							String vanue1 = (splitBySpase2[0] + " " +  splitBySpase2[1] + " " + splitBySpase2[2]);
+							ticketsPrice = Integer.parseInt(splitBySpase2[3]);
+							ticketsCount = Integer.parseInt(splitBySpase2[4]);
+						}
+					}
+					else if(splitBySpase.length == 2) {
+						String name = splitBySpase[0] + " " + splitBySpase[1];
+						
+						if(splitBySpase2.length == 3) {
+							String vanue1 = splitBySpase2[0];
+							ticketsPrice = Integer.parseInt(splitBySpase2[1]);
+							ticketsCount = Integer.parseInt(splitBySpase2[2]);
+						}
+							
+						else if(splitBySpase2.length == 4) {
+								String vanue1 = (splitBySpase2[0] + " " + splitBySpase2[1]);
+								ticketsPrice = Integer.parseInt(splitBySpase2[2]);
+								ticketsCount = Integer.parseInt(splitBySpase2[3]);
+						}
+						else {
+								String vanue1 = (splitBySpase2[0] + " " +  splitBySpase2[1] + " " + splitBySpase2[2]);
+								ticketsPrice = Integer.parseInt(splitBySpase2[3]);
+								ticketsCount = Integer.parseInt(splitBySpase2[4]);
+						}	
+					}
+					else {
+						String name = splitBySpase[0] + " " + splitBySpase[1] + " " + splitBySpase[2];
+						
+						if(splitBySpase2.length == 3) {
+							String vanue1 = splitBySpase2[0];
+							ticketsPrice = Integer.parseInt(splitBySpase2[1]);
+							ticketsCount = Integer.parseInt(splitBySpase2[2]);
+														
+						}
+						else if(splitBySpase2.length == 4) {
+								String vanue1 = (splitBySpase2[0] + " " + splitBySpase2[1]);
+								ticketsPrice = Integer.parseInt(splitBySpase2[2]);
+								ticketsCount = Integer.parseInt(splitBySpase2[3]);
+							}
+						else {
+							String vanue1 = (splitBySpase2[0] + " " +  splitBySpase2[1] + " " + splitBySpase2[2]);
+							ticketsPrice = Integer.parseInt(splitBySpase2[3]);
+							ticketsCount = Integer.parseInt(splitBySpase2[4]);							
+						}	
+					}
+				}
+				money = ticketsPrice * ticketsCount;
+			}
+		}
