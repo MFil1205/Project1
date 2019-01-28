@@ -1,5 +1,6 @@
 package СръбскоUnleashed;
 
+import java.util.HashMap;
 import java.util.Scanner;
 
 public class СръбскоUnleashed {
@@ -9,8 +10,12 @@ public class СръбскоUnleashed {
 		Scanner scan = new Scanner(System.in);
 		String command = "";
 		int money = 0;
+		String name = null;
 		int ticketsPrice = 0;
 		int ticketsCount = 0;
+		
+		HashMap<String, Integer> collection = new HashMap<String, Integer>();
+		
 		
 		while(!command.equals("End")) {
 			command = scan.nextLine();
@@ -20,7 +25,7 @@ public class СръбскоUnleashed {
 				String[] splitBySpase2 = splittedCommand[1].toString().split(" ");
 				
 					if(splitBySpase.length == 1){
-						String name = splitBySpase[0];
+						name = splitBySpase[0];
 						
 						if(splitBySpase2.length == 3) {
 						String vanue1 = splitBySpase2[0];
@@ -40,7 +45,7 @@ public class СръбскоUnleashed {
 						}
 					}
 					else if(splitBySpase.length == 2) {
-						String name = splitBySpase[0] + " " + splitBySpase[1];
+						name = splitBySpase[0] + " " + splitBySpase[1];
 						
 						if(splitBySpase2.length == 3) {
 							String vanue1 = splitBySpase2[0];
@@ -60,7 +65,7 @@ public class СръбскоUnleashed {
 						}	
 					}
 					else {
-						String name = splitBySpase[0] + " " + splitBySpase[1] + " " + splitBySpase[2];
+						name = splitBySpase[0] + " " + splitBySpase[1] + " " + splitBySpase[2];
 						
 						if(splitBySpase2.length == 3) {
 							String vanue1 = splitBySpase2[0];
@@ -80,8 +85,20 @@ public class СръбскоUnleashed {
 						}	
 					}
 					money = ticketsPrice * ticketsCount;
+					if(!collection.containsKey(name))
+					{
+						collection.put(name, money);
+					}
+					else
+						collection.put(name, collection.get(name) + money);
+					
 					System.out.println("Money is:" +  money);
 				}
-		
-			}
+			for (String names: collection.keySet()){
+
+				String key =name.toString();
+				String value = collection.get(name).toString();  
+				System.out.println(key + " -> " + value);  
+			} 
 		}
+	}
