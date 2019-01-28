@@ -79,7 +79,9 @@ public class СръбскоUnleashed {
 							ticketsCount = Integer.parseInt(splitBySpase2[4]);							
 						}	
 					}
+					money = ticketsPrice * ticketsCount;
+					System.out.println("Money is:" +  money);
 				}
-				money = ticketsPrice * ticketsCount;
+		
 			}
 		}
