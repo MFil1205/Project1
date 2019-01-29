@@ -1,0 +1,64 @@
+package LogsAggregator;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Scanner;
+import java.util.TreeMap;
+
+public class LogsAggregator {
+
+	public static void main(String[] args) {
+		
+		Scanner scan = new Scanner(System.in);
+		String n = scan.nextLine();
+		int nAsInt = Integer.parseInt(n);
+		String input = "";
+
+		TreeMap<String,List<String>> collection  = new TreeMap<String, List<String>>();
+		
+		List<String> listCollection  = new ArrayList<String>();
+		
+		HashMap<String, Integer> collectionForDuration = new HashMap<String, Integer>();
+	
+		for(int i = 1; i <= nAsInt; i++) {
+			
+			input = scan.nextLine();
+			
+			String[] splittedInput = input.split(" ");
+			String ip = splittedInput[0];
+			String name = splittedInput[1];
+			Integer duration =  Integer.parseInt(splittedInput[2]);
+			
+			
+			if(!collection.containsKey(name)) {
+				if(listCollection.contains(ip)) {
+					collectionForDuration.put(name, collectionForDuration.get(name) + duration);
+					continue;
+				}
+				listCollection.add(ip);
+				collection.put(name, listCollection);
+				collectionForDuration.put(name, duration);
+			}
+			else {
+				if(listCollection.contains(ip))
+				{   collectionForDuration.put(name, collectionForDuration.get(name) + duration);
+					continue;
+				}
+				listCollection.add(ip);
+				collection.put(name,collection.get(name) + listCollection.));
+				collectionForDuration.put(name, collectionForDuration.get(name) + duration);
+			}
+		}
+		
+		for (String name: collection.keySet()){
+			
+			for(Integer duration: collectionForDuration.values())
+				
+				for(List<String> value: collection.values())
+
+					System.out.println(name + ":" + duration + "[" + value + "]");
+			} 
+		}
+
+	}
