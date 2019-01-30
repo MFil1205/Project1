@@ -1,0 +1,66 @@
+package PopulationCounter;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map.Entry;
+import java.util.Scanner;
+import java.util.Set;
+import java.util.TreeSet;
+
+import javax.xml.soap.Node;
+
+public class PopulationCounter {
+
+	public static void main(String[] args) {
+
+		Scanner scan = new Scanner(System.in);
+		String command = scan.nextLine();
+		
+		HashMap<String, HashMap<List<String>, Integer>> collection = new HashMap<String, HashMap<List<String>, Integer>>();
+		
+		//     Country,           tOWN, Population
+		
+		int currentPopulation = 0;
+		int totalPopulation = 0;
+
+		while(!command.equals("report")) {
+			String[] splitCommand = command.split("\\|");
+			String townAsString = splitCommand[0];
+			List<String> town = new ArrayList<String>();
+			String country = splitCommand[1];
+			currentPopulation = Integer.parseInt(splitCommand[2]);
+			
+			if(!collection.containsKey(country)) {
+				collection.put(country, new HashMap<List<String>, Integer>());
+				if(!collection.get(country).containsKey(town)){
+					town.add(townAsString);
+					collection.get(country).put(town, currentPopulation);
+				}
+				else {
+					collection.get(country).containsKey(town);
+				}
+			}
+			else {
+				town.add(townAsString);
+				totalPopulation+=currentPopulation;
+				collection.get(country).put(town, totalPopulation);
+			}
+			command = scan.nextLine();
+			
+			
+		}
+		for(String country: collection.keySet())
+		{
+			for(Integer population: collection.get(country).values()) {
+			
+			String key = country.toString();
+			System.out.println(key + " (total population: " + population +  ")");
+
+			Set values = collection.get(country).keySet();
+			System.out.println("=>"+ values + ": " + population);
+		}
+	}
+	}
+}
+
